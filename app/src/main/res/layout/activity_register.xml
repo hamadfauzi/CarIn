@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayoutRegister"
+        android:layout_marginTop="200dp"
+        android:gravity="center"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btnToLoginActivity"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/background_button_login2"/>
+
+        <Button
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="Register"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:background="@drawable/background_button_register2"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/daftarUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayoutRegister"
+        android:layout_marginTop="35dp"
+        android:padding="15dp"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/person"
+        android:layout_marginRight="20dp" />
+
+    <EditText
+        android:id="@+id/daftarEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daftarUsername"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/mail"
+        android:layout_marginRight="20dp" />
+
+    <EditText
+        android:id="@+id/daftarPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daftarEmail"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/lock"
+        android:layout_marginRight="20dp" />
+
+    <EditText
+        android:id="@+id/daftarNoTelp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daftarPassword"
+        android:layout_marginTop="15dp"
+        android:padding="15dp"
+        android:background="@drawable/background_input"
+        android:layout_marginLeft="20dp"
+        android:drawableLeft="@drawable/phone"
+        android:layout_marginRight="20dp" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/daftarNoTelp"
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/background_button"
+        android:text="Register"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"/>
+
+
+</RelativeLayout>

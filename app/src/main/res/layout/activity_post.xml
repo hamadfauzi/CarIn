@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".PostActivity">
+
+    <include layout="@layout/app_bar_layout"
+        android:id="@+id/post_toolbar">
+    </include>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/upload"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/post_toolbar"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnUploadImage"/>
+
+    <EditText
+        android:id="@+id/inputJudulPostingan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/btnUploadImage"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="judul post"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:id="@+id/postLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputJudulPostingan"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Category : "
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_marginLeft="20dp"
+            />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_marginLeft="10dp" android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mobil"
+                    android:textColorHighlight="@color/colorBackground"
+                    android:id="@+id/rbMobil"/>
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:textColorHighlight="@color/colorBackground"
+                    android:layout_height="wrap_content"
+                    android:text="Mobil"
+                    android:id="@+id/rbMotor"/>
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+    <EditText
+        android:id="@+id/inputDeskripsiPostingan"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/postLinearLayout"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="Deskripsi Postingan"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <EditText
+        android:id="@+id/inputAlamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/inputDeskripsiPostingan"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="Alamat"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <EditText
+        android:id="@+id/inputHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/inputAlamat"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="Harga Sewa"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <Button
+        android:id="@+id/btnPost"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_button"
+        android:layout_below="@id/inputHarga"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="Post"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/postNavigationBar"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:background="@color/colorBackground"
+        app:menu="@menu/navigation_bar_items"
+        android:outlineAmbientShadowColor="@android:color/white"
+        android:outlineSpotShadowColor="@android:color/white"
+        app:itemTextColor="@android:color/white"
+        android:layout_height="wrap_content">
+
+    </android.support.design.widget.BottomNavigationView>
+
+
+</RelativeLayout>

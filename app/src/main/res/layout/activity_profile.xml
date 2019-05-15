@@ -88,8 +88,8 @@
             android:id="@+id/profileStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="HAHAHHAHhjasgdjhgdasjhgasdjh gsjhagdasjhgasdjhsdadasdsadasasdadsasdasddasdasasd"
-            android:textColor="@android:color/white"
+            android:text="Ini Adalah status "
+            android:textColor="@android:color/black"
             android:padding="10dp"/>
 
     </LinearLayout>

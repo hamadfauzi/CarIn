@@ -1,9 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     tools:context=".EditProfileActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <include layout="@layout/app_bar_layout"
+        android:id="@+id/editProfile_toolbar">
+    </include>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/upload"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/editProfile_toolbar"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnUploadEditProfile"/>
+
+    <EditText
+        android:id="@+id/inputNewProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@+id/btnUploadEditProfile"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="New Profile Name"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <EditText
+        android:id="@+id/inputNewStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/inputNewProfileName"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="New Status"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+
+    <EditText
+        android:id="@+id/inputNewPhoneNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_input"
+        android:layout_below="@id/inputNewStatus"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:hint="New Phone Number"
+        android:padding="10dp"
+        android:textColorHint="@android:color/darker_gray" />
+    <Button
+        android:id="@+id/btnUpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_button"
+        android:layout_below="@id/inputNewPhoneNumber"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:text="Update"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"/>
+</RelativeLayout>

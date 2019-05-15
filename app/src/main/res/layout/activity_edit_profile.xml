@@ -59,6 +59,7 @@
         android:hint="New Phone Number"
         android:padding="10dp"
         android:textColorHint="@android:color/darker_gray" />
+
     <Button
         android:id="@+id/btnUpdateProfile"
         android:layout_width="match_parent"

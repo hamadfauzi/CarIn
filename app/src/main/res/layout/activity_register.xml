@@ -68,6 +68,7 @@
         android:layout_below="@id/daftarEmail"
         android:layout_marginTop="15dp"
         android:padding="15dp"
+        android:inputType="textPassword"
         android:background="@drawable/background_input"
         android:layout_marginLeft="20dp"
         android:drawableLeft="@drawable/lock"

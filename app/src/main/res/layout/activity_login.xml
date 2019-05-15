@@ -57,6 +57,7 @@
         android:layout_below="@id/inputEmail"
         android:layout_marginTop="15dp"
         android:padding="15dp"
+        android:inputType="textPassword"
         android:background="@drawable/background_input"
         android:layout_marginLeft="20dp"
         android:drawableLeft="@drawable/lock"
@@ -69,6 +70,7 @@
         android:layout_below="@id/inputPassword"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
+
         android:layout_marginTop="50dp"
         android:background="@drawable/background_button"
         android:text="Login"

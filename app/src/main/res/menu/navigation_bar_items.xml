@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/itemHome" android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home" android:iconTint="@android:color/white"></item>
+    <item android:id="@+id/itemUpload" android:icon="@drawable/publish"
+        android:title="Post" android:iconTint="@android:color/white"></item>
+    <item android:id="@+id/itemOrder" android:icon="@drawable/myorder"
+        android:title="MyOrder" android:iconTint="@android:color/white"></item>
+    <item android:id="@+id/itemProfile" android:icon="@drawable/ic_person_black_24dp"
+        android:title="Profile" android:iconTint="@android:color/white" ></item>
+
+</menu>

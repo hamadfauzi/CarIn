@@ -45,13 +45,16 @@ public class PostActivity extends AppCompatActivity {
     private final int GALLERY_PICK = 1;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+        mAuth = FirebaseAuth.getInstance();
         initilize();
     }
 
-    private void initilize() {
+    private void initilize()
+    {
         upload = (ImageButton) findViewById(R.id.btnUploadImage);
         post = (Button) findViewById(R.id.btnPost);
         judul = (EditText) findViewById(R.id.inputJudulPostingan);
@@ -60,7 +63,6 @@ public class PostActivity extends AppCompatActivity {
         deskripsi = (EditText) findViewById(R.id.inputDeskripsiPostingan);
         mobil = (RadioButton) findViewById(R.id.rbMobil);
         motor = (RadioButton) findViewById(R.id.rbMotor);
-        mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         postRef = FirebaseDatabase.getInstance().getReference().child("post").child(currentUserID);
@@ -79,7 +81,8 @@ public class PostActivity extends AppCompatActivity {
         });
 
     }
-    private void openGallery(){
+    private void openGallery()
+    {
         Intent galleryIntent =  new Intent();
         galleryIntent.setType("image/*");
         galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
@@ -87,7 +90,8 @@ public class PostActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
         if(requestCode == GALLERY_PICK && resultCode == RESULT_OK && data != null){
@@ -131,7 +135,8 @@ public class PostActivity extends AppCompatActivity {
         });
     }
 
-    private void savePostUser() {
+    private void savePostUser()
+    {
         final String jud = judul.getText().toString();
         final String ala = alamat.getText().toString();
         final String har = harga.getText().toString();
@@ -201,6 +206,7 @@ public class PostActivity extends AppCompatActivity {
                                 {
                                     sentToHomeActivity();
                                     Toast.makeText(PostActivity.this, "Postingan berhasil dibuat", Toast.LENGTH_SHORT).show();
+                                    saveImageToFirebaseStorage();
                                 }
                                 else
                                 {
@@ -220,7 +226,8 @@ public class PostActivity extends AppCompatActivity {
         }
     }
 
-    private void sentToHomeActivity() {
+    private void sentToHomeActivity()
+    {
         Intent homeIntent = new Intent(PostActivity.this,MainActivity.class);
         startActivity(homeIntent);
         finish();
@@ -236,7 +243,8 @@ public class PostActivity extends AppCompatActivity {
         }
     }
 
-    private void sentToLoginActivity() {
+    private void sentToLoginActivity()
+    {
         Intent loginIntent = new Intent(PostActivity.this,LoginActivity.class);
         startActivity(loginIntent);
         finish();

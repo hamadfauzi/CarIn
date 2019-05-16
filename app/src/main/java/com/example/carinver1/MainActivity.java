@@ -35,7 +35,9 @@ import com.google.firebase.auth.FirebaseUser;
 
                          break;
                      case R.id.itemProfile:
-
+                         Intent profIntent = new Intent(MainActivity.this,ProfileActivity.class);
+                         startActivity(profIntent);
+                         finish();
                          break;
                      case R.id.itemUpload:
                          sentToPostActivity();
@@ -50,12 +52,6 @@ import com.google.firebase.auth.FirebaseUser;
         Intent postIntent = new Intent(MainActivity.this,PostActivity.class);
         startActivity(postIntent);
         finish();
-     }
-
-     @Override
-     protected void onStart() {
-         super.onStart();
-
      }
 
      private void sentToLoginActivity()

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:id="@+id/linearLayoutRegister"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="100dp"
         android:gravity="center"
         android:layout_height="wrap_content">
 
@@ -44,6 +44,7 @@
         android:layout_below="@id/linearLayoutRegister"
         android:layout_marginTop="35dp"
         android:padding="15dp"
+        android:hint="Enter Your Fullname"
         android:background="@drawable/background_input"
         android:layout_marginLeft="20dp"
         android:drawableLeft="@drawable/person"
@@ -52,6 +53,7 @@
     <EditText
         android:id="@+id/daftarEmail"
         android:layout_width="match_parent"
+        android:hint="Enter Your Email"
         android:layout_height="wrap_content"
         android:layout_below="@id/daftarUsername"
         android:layout_marginTop="15dp"
@@ -68,6 +70,7 @@
         android:layout_below="@id/daftarEmail"
         android:layout_marginTop="15dp"
         android:padding="15dp"
+        android:hint="Enter Your Password"
         android:inputType="textPassword"
         android:background="@drawable/background_input"
         android:layout_marginLeft="20dp"
@@ -81,6 +84,8 @@
         android:layout_below="@id/daftarPassword"
         android:layout_marginTop="15dp"
         android:padding="15dp"
+        android:inputType="phone"
+        android:hint="Enter Your Phone Number"
         android:background="@drawable/background_input"
         android:layout_marginLeft="20dp"
         android:drawableLeft="@drawable/phone"
@@ -99,6 +104,5 @@
         android:textStyle="bold"
         android:textColor="@android:color/white"
         android:textSize="18sp"/>
-
 
 </RelativeLayout>

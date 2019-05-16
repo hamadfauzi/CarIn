@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -59,6 +60,7 @@ public class PostActivity extends AppCompatActivity {
         deskripsi = (EditText) findViewById(R.id.inputDeskripsiPostingan);
         mobil = (RadioButton) findViewById(R.id.rbMobil);
         motor = (RadioButton) findViewById(R.id.rbMotor);
+        mAuth = FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         postRef = FirebaseDatabase.getInstance().getReference().child("post").child(currentUserID);
@@ -224,5 +226,19 @@ public class PostActivity extends AppCompatActivity {
         finish();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null)
+        {
+            sentToLoginActivity();
+        }
+    }
 
+    private void sentToLoginActivity() {
+        Intent loginIntent = new Intent(PostActivity.this,LoginActivity.class);
+        startActivity(loginIntent);
+        finish();
+    }
 }

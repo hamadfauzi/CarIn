@@ -1,8 +1,10 @@
  package com.example.carinver1;
 
 import android.content.Intent;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -10,6 +12,7 @@ import com.google.firebase.auth.FirebaseUser;
  public class MainActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
+    BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,17 +23,39 @@ import com.google.firebase.auth.FirebaseUser;
      private void initialize()
      {
          mAuth = FirebaseAuth.getInstance();
+         bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainNavigationBar);
+         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+             @Override
+             public boolean onNavigationItemSelected(MenuItem menuItem) {
+                 switch (menuItem.getItemId()){
+                     case R.id.itemHome:
+
+                         break;
+                     case R.id.itemOrder:
+
+                         break;
+                     case R.id.itemProfile:
+
+                         break;
+                     case R.id.itemUpload:
+                         sentToPostActivity();
+                         break;
+                 }
+                 return true;
+             }
+         });
+     }
+
+     private void sentToPostActivity() {
+        Intent postIntent = new Intent(MainActivity.this,PostActivity.class);
+        startActivity(postIntent);
+        finish();
      }
 
      @Override
      protected void onStart() {
          super.onStart();
 
-         FirebaseUser currentUser = mAuth.getCurrentUser();
-         if(currentUser == null)
-         {
-             sentToLoginActivity();
-         }
      }
 
      private void sentToLoginActivity()

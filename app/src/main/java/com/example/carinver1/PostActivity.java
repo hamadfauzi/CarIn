@@ -50,7 +50,17 @@ public class PostActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         mAuth = FirebaseAuth.getInstance();
-        initilize();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null)
+        {
+            sentToLoginActivity();
+        }
+        else
+        {
+            currentUserID = mAuth.getCurrentUser().getUid();
+            initilize();
+        }
+
     }
 
     private void initilize()
@@ -63,7 +73,6 @@ public class PostActivity extends AppCompatActivity {
         deskripsi = (EditText) findViewById(R.id.inputDeskripsiPostingan);
         mobil = (RadioButton) findViewById(R.id.rbMobil);
         motor = (RadioButton) findViewById(R.id.rbMotor);
-        currentUserID = mAuth.getCurrentUser().getUid();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         postRef = FirebaseDatabase.getInstance().getReference().child("post").child(currentUserID);
         post.setOnClickListener(new View.OnClickListener() {
@@ -197,6 +206,7 @@ public class PostActivity extends AppCompatActivity {
                         postMap.put("harga",har);
                         postMap.put("kategori",type);
                         postMap.put("alamat",ala);
+                        postMap.put("postimage",downloadUrl);
                         postMap.put("phonenumber",phone);
                        
                         postRef.updateChildren(postMap).addOnCompleteListener(new OnCompleteListener() {
@@ -231,16 +241,6 @@ public class PostActivity extends AppCompatActivity {
         Intent homeIntent = new Intent(PostActivity.this,MainActivity.class);
         startActivity(homeIntent);
         finish();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser == null)
-        {
-            sentToLoginActivity();
-        }
     }
 
     private void sentToLoginActivity()

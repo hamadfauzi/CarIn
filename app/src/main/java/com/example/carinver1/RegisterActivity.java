@@ -44,8 +44,8 @@ public class RegisterActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.daftarPassword);
         noTelp = (EditText) findViewById(R.id.daftarNoTelp);
         mAuth = FirebaseAuth.getInstance();
-        currentUserID = mAuth.getCurrentUser().getUid();
-        usersRefs = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
+
+
         progressDialog = new ProgressDialog(this);
         toLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,8 +64,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void buatAkun() {
         String ema = email.getText().toString();
         String pass = password.getText().toString();
-        String userName = name.getText().toString();
-        String phone = noTelp.getText().toString();
+        final String userName = name.getText().toString();
+        final String phone = noTelp.getText().toString();
         progressDialog.setCancelable(true);
         progressDialog.setMessage("Tunggu sebentar ... ");
         progressDialog.setTitle("Message");
@@ -92,7 +92,13 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
-
+                        Intent profileIntent = new Intent(RegisterActivity.this,ProfileActivity.class);
+                        profileIntent.putExtra("name", userName);
+                        profileIntent.putExtra("phone", phone);
+                        startActivity(profileIntent);
+                        finish();
+                        Toast.makeText(RegisterActivity.this, "Create Account Success", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                     else
                     {
@@ -101,27 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                     }
                 }
             });
-            HashMap userMap = new HashMap();
-            userMap.put("namalengkap",userName);
-            userMap.put("email",ema);
-            userMap.put("phonenumber",phone);
-            userMap.put("status","Avaiable");
 
-            usersRefs.updateChildren(userMap).addOnCompleteListener(new OnCompleteListener() {
-                @Override
-                public void onComplete(@NonNull Task task) {
-                    if (task.isSuccessful())
-                    {
-                        sentToLoginActivity();
-                        progressDialog.dismiss();
-                    }
-                    else
-                    {
-                        Toast.makeText(RegisterActivity.this, "Error : "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                        progressDialog.dismiss();
-                    }
-                }
-            });
         }
 
     }

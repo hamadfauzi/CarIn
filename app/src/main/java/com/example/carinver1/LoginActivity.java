@@ -23,6 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText email,password;
     ProgressDialog progressDialog;
     FirebaseAuth mAuth;
+    private String NAME,PHONE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -70,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(e)){
             Toast.makeText(this, "Insert Your Email", Toast.LENGTH_SHORT).show();
         }else if(TextUtils.isEmpty(p)){
-            Toast.makeText(this, "Insert Yout Password", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Insert Your Password", Toast.LENGTH_SHORT).show();
         }else{
             progressDialog.setTitle("Login");
             progressDialog.setMessage("Please Wait ... ");

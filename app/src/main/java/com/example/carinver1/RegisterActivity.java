@@ -92,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful())
                     {
-                        Intent profileIntent = new Intent(RegisterActivity.this,ProfileActivity.class);
+                        Intent profileIntent = new Intent(RegisterActivity.this,EditProfileActivity.class);
                         profileIntent.putExtra("name", userName);
                         profileIntent.putExtra("phone", phone);
                         startActivity(profileIntent);

@@ -68,8 +68,9 @@
         android:layout_below="@id/inputNewPhoneNumber"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:text="Update"
+        android:text="Update Profile"
         android:textColor="@android:color/white"
         android:textStyle="bold"
         android:layout_marginTop="10dp"/>
+
 </RelativeLayout>

@@ -72,7 +72,7 @@
                     android:layout_marginLeft="30dp"
                     android:textColorHighlight="@color/colorBackground"
                     android:layout_height="wrap_content"
-                    android:text="Mobil"
+                    android:text="Motor"
                     android:id="@+id/rbMotor"/>
 
             </RadioGroup>

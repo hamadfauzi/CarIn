@@ -2,17 +2,26 @@ package com.example.carinver1;
 
 public class Post {
 
-    private String judul,deskripsi,photo;
+    public String judul,deskripsi,postimage,harga;
 
     public Post()
     {
 
     }
-    public Post(String judul,String deskripsi,String photo)
+    public Post(String judul,String deskripsi,String postimage,String harga)
     {
         this.judul = judul;
         this.deskripsi = deskripsi;
-        this.photo = photo;
+        this.postimage = postimage;
+        this.harga = harga;
+    }
+
+    public String getHarga() {
+        return harga;
+    }
+
+    public void setHarga(String harga) {
+        this.harga = harga;
     }
 
     public String getDeskripsi() {
@@ -23,8 +32,8 @@ public class Post {
         return judul;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getPostimage() {
+        return postimage;
     }
 
     public void setDeskripsi(String deskripsi) {
@@ -35,8 +44,8 @@ public class Post {
         this.judul = judul;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setPhoto(String postimage) {
+        this.postimage = postimage;
     }
 
 }

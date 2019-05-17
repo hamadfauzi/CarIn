@@ -46,23 +46,24 @@
     </LinearLayout>
 
 
-    <ScrollView
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_below="@+id/mainLinearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_above="@id/mainNavigationBar"
-        android:layout_marginTop="30dp"
-        android:layout_below="@id/mainLinearLayout">
+        android:layout_height="match_parent">
 
-        <android.support.v7.widget.RecyclerView
+
+    <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
-            android:layout_below="@+id/main_toolbar"
-            android:layout_alignParentStart="true"
             android:id="@+id/list_all_vehicle"
-            android:layout_margin="12dp"
-            android:layout_height="wrap_content"/>
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_height="match_parent"/>
 
 
-    </ScrollView>
+    </FrameLayout>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/mainNavigationBar"
         android:layout_width="match_parent"

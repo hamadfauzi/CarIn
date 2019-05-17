@@ -79,7 +79,8 @@ public class PostActivity extends AppCompatActivity {
         motor = (RadioButton) findViewById(R.id.rbMotor);
         ImagesRef = FirebaseStorage.getInstance().getReference();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
-        postRef = FirebaseDatabase.getInstance().getReference().child("post").child(currentUserID);
+        postRef = FirebaseDatabase.getInstance().getReference().child("post");
+
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.postNavigationBar);
         bottomNavigationView.setSelectedItemId(R.id.itemUpload);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -111,7 +112,7 @@ public class PostActivity extends AppCompatActivity {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                savePostUser();
+                saveImageToFirebaseStorage();
             }
         });
 
@@ -164,10 +165,11 @@ public class PostActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
+                            savePostUser();
+
                         }
                     });
                     Toast.makeText(PostActivity.this, "Upload Image Success", Toast.LENGTH_SHORT).show();
-                    savePostUser();
                 }else{
                     String m = task.getException().getMessage();
                     Toast.makeText(PostActivity.this, "Error : "+m, Toast.LENGTH_SHORT).show();
@@ -241,14 +243,13 @@ public class PostActivity extends AppCompatActivity {
                         postMap.put("postimage",downloadUrl);
                         postMap.put("phonenumber",phone);
                        
-                        postRef.updateChildren(postMap).addOnCompleteListener(new OnCompleteListener() {
+                        postRef.child(currentUserID + postRandomName).updateChildren(postMap).addOnCompleteListener(new OnCompleteListener() {
                             @Override
                             public void onComplete(@NonNull Task task) {
                                 if(task.isSuccessful())
                                 {
                                     sentToHomeActivity();
                                     Toast.makeText(PostActivity.this, "Postingan berhasil dibuat", Toast.LENGTH_SHORT).show();
-                                    saveImageToFirebaseStorage();
                                 }
                                 else
                                 {

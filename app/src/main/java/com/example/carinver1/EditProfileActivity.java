@@ -92,7 +92,8 @@ public class EditProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void updateProfileUser() {
+    private void updateProfileUser()
+    {
 
         final String name = newName.getText().toString();
         final String status = newStatus.getText().toString();
@@ -147,9 +148,9 @@ public class EditProfileActivity extends AppCompatActivity {
 
     }
 
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -205,7 +206,6 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         }
     }
-
 
     private void sentToProfileActivity()
     {

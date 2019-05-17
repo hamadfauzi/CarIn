@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +26,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
@@ -35,6 +38,7 @@ public class PostActivity extends AppCompatActivity {
 
     ImageButton upload;
     Button post;
+    BottomNavigationView bottomNavigationView;
     EditText judul,alamat,harga,deskripsi;
     RadioButton mobil,motor;
     DatabaseReference usersRef,postRef;
@@ -73,8 +77,37 @@ public class PostActivity extends AppCompatActivity {
         deskripsi = (EditText) findViewById(R.id.inputDeskripsiPostingan);
         mobil = (RadioButton) findViewById(R.id.rbMobil);
         motor = (RadioButton) findViewById(R.id.rbMotor);
+        ImagesRef = FirebaseStorage.getInstance().getReference();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         postRef = FirebaseDatabase.getInstance().getReference().child("post").child(currentUserID);
+        bottomNavigationView = (BottomNavigationView) findViewById(R.id.postNavigationBar);
+        bottomNavigationView.setSelectedItemId(R.id.itemUpload);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.itemHome:
+                        Intent homeIntent = new Intent(PostActivity.this,MainActivity.class);
+                        startActivity(homeIntent);
+                        finish();
+                        break;
+                    case R.id.itemOrder:
+                        Intent orderIntent = new Intent(PostActivity.this,OrderActivity.class);
+                        startActivity(orderIntent);
+                        finish();
+                        break;
+                    case R.id.itemProfile:
+                        Intent profIntent = new Intent(PostActivity.this,ProfileActivity.class);
+                        startActivity(profIntent);
+                        finish();
+                        break;
+                    case R.id.itemUpload:
+
+                        break;
+                }
+                return true;
+            }
+        });
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -131,11 +164,10 @@ public class PostActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
-                            savePostUser();
-
                         }
                     });
                     Toast.makeText(PostActivity.this, "Upload Image Success", Toast.LENGTH_SHORT).show();
+                    savePostUser();
                 }else{
                     String m = task.getException().getMessage();
                     Toast.makeText(PostActivity.this, "Error : "+m, Toast.LENGTH_SHORT).show();
@@ -152,11 +184,11 @@ public class PostActivity extends AppCompatActivity {
         final String desk = deskripsi.getText().toString();
         final String type;
         
-        if(mobil.isSelected())
+        if(mobil.isChecked())
         {
             type = "mobil";
         }
-        else if(motor.isSelected())
+        else if(motor.isChecked())
         {
             type = "motor";
         }
@@ -197,7 +229,7 @@ public class PostActivity extends AppCompatActivity {
                     if(dataSnapshot.exists())
                     {
                         String userName = dataSnapshot.child("namalengkap").getValue().toString();
-                        String phone = dataSnapshot.child("phonenumber").getValue().toString();
+                        String phone = dataSnapshot.child("notelephone").getValue().toString();
 
                         HashMap postMap = new HashMap();
                         postMap.put("namalengkap",userName);
@@ -249,4 +281,5 @@ public class PostActivity extends AppCompatActivity {
         startActivity(loginIntent);
         finish();
     }
+
 }

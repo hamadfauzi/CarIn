@@ -117,6 +117,7 @@ public class ProfileActivity extends AppCompatActivity {
                     case R.id.itemHome:
                         Intent homeIntent = new Intent(ProfileActivity.this,MainActivity.class);
                         startActivity(homeIntent);
+                        finish();
                         break;
                     case R.id.itemOrder:
                         Intent orderIntent = new Intent(ProfileActivity.this,OrderActivity.class);

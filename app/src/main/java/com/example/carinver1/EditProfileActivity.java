@@ -32,11 +32,13 @@ import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
 import com.theartofdev.edmodo.cropper.CropImage;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class EditProfileActivity extends AppCompatActivity {
 
 
-    ImageButton upload;
-    EditText newName,newStatus,newPhoneNumber;
+    CircleImageView upload;
+    EditText newName,newStatus,newPhoneNumber,newPekerjaan;
     Button updateProfile;
     Toolbar mToolbar;
     DatabaseReference userRefs;
@@ -59,13 +61,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 {
                     String name = dataSnapshot.child("namalengkap").getValue().toString();
                     String status = dataSnapshot.child("status").getValue().toString();
-                    String phone = dataSnapshot.child("phonenumber").getValue().toString();
+                    String phone = dataSnapshot.child("notelephone").getValue().toString();
                     String image = dataSnapshot.child("profileimage").getValue().toString();
-
+                    String pekerjaan = dataSnapshot.child("pekerjaan").getValue().toString();
 
                     newName.setText(name);
                     newStatus.setText(status);
                     newPhoneNumber.setText(phone);
+                    newPekerjaan.setText(pekerjaan);
 
                     Picasso.with(EditProfileActivity.this).load(image).placeholder(R.drawable.profile).into(upload);
 
@@ -96,8 +99,9 @@ public class EditProfileActivity extends AppCompatActivity {
     {
 
         final String name = newName.getText().toString();
-        final String status = newStatus.getText().toString();
+        final String status1 = newStatus.getText().toString();
         final String phone= newPhoneNumber.getText().toString();
+        final String peker = newPekerjaan.getText().toString();
 
         AlertDialog.Builder builder = new AlertDialog.Builder(EditProfileActivity.this);
         builder.setTitle("Edit Profile");
@@ -111,8 +115,9 @@ public class EditProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 userRefs.child("namalengkap").setValue(name);
-                userRefs.child("phonenumber").setValue(phone);
-                userRefs.child("status").setValue(status);
+                userRefs.child("notelephone").setValue(phone);
+                userRefs.child("status").setValue(status1);
+                userRefs.child("pekerjaan").setValue(peker);
                 Toast.makeText(EditProfileActivity.this, "Account has been updated", Toast.LENGTH_SHORT).show();
                 sentToProfileActivity();
             }
@@ -125,10 +130,11 @@ public class EditProfileActivity extends AppCompatActivity {
 
     private void initialize()
     {
-        upload = (ImageButton) findViewById(R.id.btnUploadEditProfile);
+        upload = (CircleImageView) findViewById(R.id.btnUploadEditProfile);
         newName = (EditText) findViewById(R.id.inputNewProfileName);
         newStatus = (EditText) findViewById(R.id.inputNewStatus);
         progressDialog = new ProgressDialog(this);
+        newPekerjaan = (EditText) findViewById(R.id.inputNewPekerjaan);
         mStorage = FirebaseStorage.getInstance().getReference().child("Profile Image");
         newPhoneNumber = (EditText) findViewById(R.id.inputNewPhoneNumber);
         updateProfile = (Button) findViewById(R.id.btnUpdateProfile);

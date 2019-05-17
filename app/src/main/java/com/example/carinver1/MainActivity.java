@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
      {
          mAuth = FirebaseAuth.getInstance();
          bottomNavigationView = (BottomNavigationView) findViewById(R.id.mainNavigationBar);
+         bottomNavigationView.setSelectedItemId(R.id.itemHome);
          bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
              @Override
              public boolean onNavigationItemSelected(MenuItem menuItem) {
@@ -32,7 +33,9 @@ import com.google.firebase.auth.FirebaseUser;
 
                          break;
                      case R.id.itemOrder:
-
+                         Intent orderIntent = new Intent(MainActivity.this,OrderActivity.class);
+                         startActivity(orderIntent);
+                         finish();
                          break;
                      case R.id.itemProfile:
                          Intent profIntent = new Intent(MainActivity.this,ProfileActivity.class);

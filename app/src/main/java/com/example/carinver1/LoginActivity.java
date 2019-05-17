@@ -38,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         login = (Button) findViewById(R.id.btnLogin);
         toRegister = (Button) findViewById(R.id.btnToRegisterActivity);
         email = (EditText) findViewById(R.id.inputEmail);
-        password = (EditText) findViewById(R.id.inputEmail);
+        password = (EditText) findViewById(R.id.inputPassword);
         progressDialog = new ProgressDialog(this);
         mAuth = FirebaseAuth.getInstance();
 
@@ -95,7 +95,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void sentToHomeActivity() {
-        Intent homeIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+        Intent homeIntent = new Intent(LoginActivity.this,MainActivity.class);
         startActivity(homeIntent);
         finish();
     }

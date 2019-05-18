@@ -148,7 +148,7 @@ public class EditProfileActivity extends AppCompatActivity {
     {
         mToolbar = (Toolbar) findViewById(R.id.editProfile_toolbar);
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("Update Post");
+        getSupportActionBar().setTitle("Edit Profile");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

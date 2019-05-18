@@ -16,7 +16,7 @@
         <activity android:name=".SetupActivity"></activity>
         <activity android:name=".OrderActivity" />
         <activity android:name=".EditProfileActivity" android:parentActivityName=".ProfileActivity" />
-        <activity android:name=".DetailActivity" />
+        <activity android:name=".DetailActivity" android:parentActivityName=".MainActivity"/>
         <activity android:name=".ProfileActivity" />
         <activity android:name=".PostActivity" />
         <activity android:name=".RegisterActivity" />

@@ -102,15 +102,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
                          holder.setHarga(model.getHarga());
                          holder.setPostImage(getApplicationContext(),model.getPostimage());
 
-                         /*
+
                          holder.mView.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View v) {
-                                 Intent clickPostIntent = new Intent(MainActivity.this,ClickPostActivity.class);
+                                 Intent clickPostIntent = new Intent(MainActivity.this,DetailActivity.class);
                                  clickPostIntent.putExtra("Postkey",PostKey);
                                  startActivity(clickPostIntent);
                              }
-                         });*/
+                         });
 
                      }
 

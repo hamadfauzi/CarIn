@@ -1,5 +1,6 @@
 package com.example.carinver1;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -47,7 +48,7 @@ public class PostActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
     private String saveCurrentDate, saveCurrentTime, postRandomName,downloadUrl, currentUserID;
     private final int GALLERY_PICK = 1;
-
+    ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -80,7 +81,7 @@ public class PostActivity extends AppCompatActivity {
         ImagesRef = FirebaseStorage.getInstance().getReference();
         usersRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currentUserID);
         postRef = FirebaseDatabase.getInstance().getReference().child("post");
-
+        progressDialog = new ProgressDialog(this);
         bottomNavigationView = (BottomNavigationView) findViewById(R.id.postNavigationBar);
         bottomNavigationView.setSelectedItemId(R.id.itemUpload);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -185,7 +186,10 @@ public class PostActivity extends AppCompatActivity {
         final String har = harga.getText().toString();
         final String desk = deskripsi.getText().toString();
         final String type;
-        
+        progressDialog.setTitle("Post");
+        progressDialog.setMessage("Loading...");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
         if(mobil.isChecked())
         {
             type = "mobil";
@@ -250,10 +254,12 @@ public class PostActivity extends AppCompatActivity {
                                 {
                                     sentToHomeActivity();
                                     Toast.makeText(PostActivity.this, "Postingan berhasil dibuat", Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                 }
                                 else
                                 {
                                     Toast.makeText(PostActivity.this, "Error : "+task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    progressDialog.dismiss();
                                 }
                             }
                         });

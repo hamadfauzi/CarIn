@@ -80,7 +80,7 @@
         android:textSize="20sp"
         android:textColor="@android:color/black"/>
 
-    <EditText
+    <Button
         android:id="@+id/setupOrderTglPinjam"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
         android:textSize="20sp"
         android:textColor="@android:color/black"/>
 
-    <EditText
+    <Button
         android:id="@+id/setupOrderTglKembali"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -116,6 +116,7 @@
 
 
     <Button
+        android:id="@+id/btnBooking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"

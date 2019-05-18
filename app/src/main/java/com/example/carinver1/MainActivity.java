@@ -102,7 +102,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
                          holder.setHarga(model.getHarga());
                          holder.setPostImage(getApplicationContext(),model.getPostimage());
 
-
                          holder.mView.setOnClickListener(new View.OnClickListener() {
                              @Override
                              public void onClick(View v) {

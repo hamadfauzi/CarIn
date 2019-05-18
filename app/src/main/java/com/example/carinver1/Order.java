@@ -3,14 +3,14 @@ package com.example.carinver1;
 public class Order {
 
     private String alamatorder,date,deskripsiorder,gambarorder,
-            judulorder,notelephoneorder,pemilikorder,tglkembali,tglpinjam,time;
+            judulorder,notelephoneorder,pemilikorder,tglkembali,tglpinjam,time,hargaorder;
 
     public Order()
     {
 
     }
     public Order(String alamatorder,String date,String deskripsiorder,String gambarorder,String judulorder,String notelephoneorder
-        ,String pemilikorder,String tglkembali,String tglpinjam,String time)
+        ,String pemilikorder,String tglkembali,String tglpinjam,String time,String hargaorder)
     {
         this.alamatorder = alamatorder;
         this.date = date;
@@ -22,7 +22,11 @@ public class Order {
         this.tglkembali = tglkembali;
         this.tglpinjam = tglpinjam;
         this.time = time;
+        this.hargaorder = hargaorder;
+    }
 
+    public String getHargaorder() {
+        return hargaorder;
     }
 
     public String getTime() {

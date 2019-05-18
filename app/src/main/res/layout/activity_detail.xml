@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,9 +7,119 @@
     android:layout_height="match_parent"
     tools:context=".DetailActivity">
 
-    <include layout="@layout/app_bar_layout"
-        android:id="@+id/detail_toolbar">
-    </include>
+    <RelativeLayout
 
-    
-</RelativeLayout>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detail_toolbar"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+        <include layout="@layout/app_bar_layout"
+            android:id="@+id/detail_toolbar">
+        </include>
+
+        <ImageView
+            android:id="@+id/detailImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@id/detail_toolbar"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/upload_image"
+            android:scaleType="centerCrop"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:id="@+id/detailJudul"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailImage"
+            android:layout_marginLeft="20dp"
+            android:text="Judul Postingan"
+            android:textStyle="bold"
+            android:textColor="@color/colorBackground"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/detailPemilik"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailJudul"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="Pemilik  : "
+            android:textSize="16sp"/>
+
+
+        <TextView
+            android:id="@+id/detailNoTelp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailPemilik"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="No.Telp :   "
+            android:textSize="16sp"/>
+
+        <TextView
+            android:id="@+id/detailLokasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailNoTelp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:text="Lokasi :   "
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:id="@+id/detailLinearLayout"
+            android:background="@color/colorGray"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:layout_below="@id/detailLokasi"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp">
+
+            <TextView
+                android:id="@+id/detailDeskripsi"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Ini adalah deskripsi"
+                android:textSize="17sp"
+                android:layout_margin="10dp"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/detailLinearLayout"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_button_edit"
+            android:text="CHAT"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/btnOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnChat"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/background_button"
+            android:text="Order"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>

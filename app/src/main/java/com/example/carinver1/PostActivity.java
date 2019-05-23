@@ -155,8 +155,10 @@ public class PostActivity extends AppCompatActivity {
         saveCurrentTime = currentTime.format(calendar1.getTime());
 
         postRandomName = saveCurrentDate + saveCurrentTime;
-
-
+        progressDialog.setTitle("Upload Image");
+        progressDialog.setMessage("Please Wait..");
+        progressDialog.setCancelable(true);
+        progressDialog.show();
         final StorageReference filepath = ImagesRef.child("Post Images").child(imageUri.getLastPathSegment() + postRandomName + ".jpg");
         filepath.putFile(imageUri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
             @Override
@@ -166,6 +168,7 @@ public class PostActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
+                            progressDialog.dismiss();
                             savePostUser();
 
                         }

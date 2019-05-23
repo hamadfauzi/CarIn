@@ -165,6 +165,10 @@ public class PostActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(Uri uri) {
                             downloadUrl = uri.toString();
+                            progressDialog.setTitle("Post");
+                            progressDialog.setMessage("Loading...");
+                            progressDialog.setCancelable(true);
+                            progressDialog.show();
                             savePostUser();
 
                         }
@@ -185,10 +189,7 @@ public class PostActivity extends AppCompatActivity {
         final String har = harga.getText().toString();
         final String desk = deskripsi.getText().toString();
         final String type;
-        progressDialog.setTitle("Post");
-        progressDialog.setMessage("Loading...");
-        progressDialog.setCancelable(true);
-        progressDialog.show();
+
         if(mobil.isChecked())
         {
             type = "mobil";
